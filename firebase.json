@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "angular-tour-of-heroes-gomislu",
+      "public": "dist/angular-tour-of-heroes-gomislu",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

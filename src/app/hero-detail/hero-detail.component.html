@@ -1,0 +1,39 @@
+<div *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  {{ estValideFormulaire(hero.attaque + hero.esquive + hero.degats + hero.pv, hero.attaque, hero.esquive, hero.degats, hero.pv)}}
+  <label>
+    40 points à répartir pour pouvoir modifier le héro
+  </label>
+  <label>
+    Point(s) à répartir disponible(s) : {{ getPointsDisponibles(40 - (hero.attaque + hero.esquive + hero.degats + hero.pv)) }}
+  </label>
+  <div>
+    <label>Nom :
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+    <label>Attaque :
+      <input [(ngModel)]="hero.attaque" type="number" min="1" max="37" placeholder="attaque"/>
+    </label>
+    <label>Dégâts :
+      <input [(ngModel)]="hero.degats" type="number" min="1" max="37" placeholder="dégâts"/>
+    </label>
+    <label>Esquive :
+      <input [(ngModel)]="hero.esquive" type="number" min="1" max="37" placeholder="esquive"/>
+    </label>
+    <label>Points de vie :
+      <input [(ngModel)]="hero.pv" type="number" min="1" max="37" placeholder="points de vie"/>
+    </label>
+    <label>Arme :
+      <select>
+        <option> Aucune arme</option>
+        <option *ngFor="let weapon of weapons"> {{weapon.name}}</option>
+      </select>
+    </label>
+  </div>
+  <div class="btn-position">
+    <button (click)="goBack()">go back</button>
+  </div>
+  <div class="btn-position">
+    <button id="btn-enregistrer" (click)="save()"> Enregistrer les modifications</button>
+  </div>
+</div>

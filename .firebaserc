@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-tour-of-heroes-gomislu": {
+      "hosting": {
+        "angular-tour-of-heroes-gomislu": [
+          "angular-tour-of-heroes-gomislu"
+        ]
+      }
+    }
+  }
+}
