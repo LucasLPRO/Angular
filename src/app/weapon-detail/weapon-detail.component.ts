@@ -33,8 +33,8 @@ export class WeaponDetailComponent implements OnInit {
     this.location.back();
   }
 
-  estValideFormulaire(nb): void {
-    if (nb !== 0) {
+  estValideFormulaire(nb, atq, esq, dmg, pv, name): void {
+    if (nb !== 0 || atq === null || esq === null || dmg === null || pv === null || name === '') {
       (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = true;
     } else {
       (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = false;

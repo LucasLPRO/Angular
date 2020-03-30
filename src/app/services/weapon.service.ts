@@ -61,7 +61,7 @@ export class WeaponService {
   //   return of(HEROES.find(weapon => weapon.id === id));
   // }
 
-  // Récupération d'un héro en fonction de son id
+  // Récupération d'une arme en fonction de son id
   getWeapon(id: string): Observable<Weapon> {
 
     // Return weapon observable
@@ -85,19 +85,19 @@ export class WeaponService {
       );
   }
 
-  // Ajout d'un héro
+  // Ajout d'une arme
   addWeapon(weapon: Weapon) {
     this.db.collection<Weapon>(WeaponService.url).add(Object.assign({}, weapon));
   }
 
-  // Modification d'un héro
+  // Modification d'une arme
   updateWeapon(weapon: Weapon) {
 
     // Update document
     this.getWeaponDocument(weapon.id).update(Object.assign({}, weapon));
   }
 
-  // Suppression d'un héro
+  // Suppression d'une arme
   deleteWeapon(id: string) {
 
     // Delete the document
@@ -105,7 +105,7 @@ export class WeaponService {
   }
 
 
-  // Création du service Firebase en fonction de l'id du héro
+  // Création du service Firebase en fonction de l'id d'une arme
   private getWeaponDocument(id: string): AngularFirestoreDocument<Weapon> {
 
     // return document

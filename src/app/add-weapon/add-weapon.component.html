@@ -1,0 +1,26 @@
+<h2>Création d'une arme</h2>
+<form [formGroup]="formWeapon" (ngSubmit)="createWeapon()">
+  <p>
+    Point(s) à répartir disponible(s) : {{ ptsDisponibles }}
+  </p>
+  <p>
+    Chaque caractéristique doit être comprise entre -5 et 5 points.
+  </p>
+  <label>Name:
+    <input type="text" formControlName="name">
+  </label><br/>
+  <label>Attaque:
+    <input id="weapon-atq" type="number" formControlName="attaque" min="-5" max="5" placeholder="0">
+  </label><br/>
+  <label>Esquive:
+    <input id="weapon-esq" type="number" formControlName="esquive" min="-5" max="5" placeholder="0">
+  </label><br/>
+  <label>Dégâts:
+    <input id="weapon-dmg" type="number" formControlName="degats" min="-5" max="5" placeholder="0">
+  </label><br/>
+  <label>Point de Vie:
+    <input id="weapon-pv" type="number" formControlName="pv" min="-5" max="5" placeholder="0">
+  </label><br/>
+
+  <button type="submit" [disabled]="!formWeapon.valid || !isNewWeaponValid()">Valider</button>
+</form>

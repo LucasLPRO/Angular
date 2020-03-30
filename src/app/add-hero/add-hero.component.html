@@ -1,0 +1,41 @@
+<h2>Création d'un héros</h2>
+<form [formGroup]="formHero" (ngSubmit)="createHero()">
+  <p>
+    Point(s) à répartir disponible(s) : {{ ptsDisponibles }}
+  </p>
+  <p>
+    40 points à répartir pour pouvoir modifier le héros.
+  </p>
+  <label>Name:
+    <input type="text" formControlName="name">
+  </label><br/>
+  <label>Attaque:
+    <input id="weapon-atq" type="number" formControlName="attaque" min="1" max="37" placeholder="0">
+  </label><br/>
+  <label>Esquive:
+    <input id="weapon-esq" type="number" formControlName="esquive" min="1" max="37" placeholder="0">
+  </label><br/>
+  <label>Dégâts:
+    <input id="weapon-dmg" type="number" formControlName="degats" min="1" max="37" placeholder="0">
+  </label><br/>
+  <label>Point de Vie:
+    <input id="weapon-pv" type="number" formControlName="pv" min="1" max="37" placeholder="0">
+  </label><br/>
+  <label>Sélectionner une arme pour votre héros :
+    <select formControlName="arme" name="Weapon">
+      <option value=''>No weapon</option>
+      <option *ngFor="let weapon of weapons" [value]="weapon.id"> {{weapon.name}}
+      </option>
+    </select>
+  </label><br/>
+
+  <div class="selectedWeapon" *ngIf="weapons && getWeaponSelected()">
+    <label> Statistiques de l'arme sélectionnée : </label>
+    <div> Attaque : {{getWeaponSelected().attaque}} </div>
+    <div> Esquive : {{getWeaponSelected().esquive}} </div>
+    <div> Dégâts : {{getWeaponSelected().degats}}</div>
+    <div> Points de vie : {{getWeaponSelected().pv}}</div>
+  </div>
+
+  <button type="submit" [disabled]="!formHero.valid || !isNewHeroValid()">Valider</button>
+</form>

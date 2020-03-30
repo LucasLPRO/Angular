@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -14,6 +14,8 @@ import {environment} from '../environments/environment';
 import { WeaponsComponent } from './weapons/weapons.component';
 import { WeaponDetailComponent } from './weapon-detail/weapon-detail.component';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { AddHeroComponent } from './add-hero/add-hero.component';
+import { AddWeaponComponent } from './add-weapon/add-weapon.component';
 
 @NgModule({
   declarations: [
@@ -23,20 +25,24 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     MessagesComponent,
     DashboardComponent,
     WeaponsComponent,
-    WeaponDetailComponent
+    WeaponDetailComponent,
+    AddHeroComponent,
+    AddWeaponComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    NgbPaginationModule,
-    NgbAlertModule,
-    // AngularFireAnalyticsModule, // dynamically imports firebase/analytics
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    // AngularFireStorageModule // imports firebase/storage only needed for storage features
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        NgbPaginationModule,
+        NgbAlertModule,
+        // AngularFireAnalyticsModule, // dynamically imports firebase/analytics
+        AngularFirestoreModule,
+        ReactiveFormsModule,
+        // imports firebase/firestore, only needed for database features
+        // AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+        // AngularFireStorageModule // imports firebase/storage only needed for storage features
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

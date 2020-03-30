@@ -14,6 +14,7 @@ import {WeaponService} from '../services/weapon.service';
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
+  heroWeapon: Weapon;
   weapons: Weapon[];
 
   constructor(
@@ -31,15 +32,19 @@ export class HeroDetailComponent implements OnInit {
   initHero(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(hero => {
+        this.hero = hero;
+        this.weaponService.getWeapon(this.hero.weaponId)
+          .subscribe(heroWeapon => this.heroWeapon = heroWeapon);
+      });
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  estValideFormulaire(nb, atq, esq, dgt, pv): void {
-    if (nb > 40 || nb < 0 || atq < 1 || esq < 1 || dgt < 1 || pv < 1) {
+  estValideFormulaire(nb, atq, esq, dgt, pv, name): void {
+    if (nb > 40 || nb < 0 || atq < 1 || esq < 1 || dgt < 1 || pv < 1 || name === '') {
       (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = true;
     } else {
       (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = false;
@@ -61,4 +66,5 @@ export class HeroDetailComponent implements OnInit {
     this.weaponService.getWeapons()
       .subscribe(weapons => this.weapons = weapons);
   }
+
 }

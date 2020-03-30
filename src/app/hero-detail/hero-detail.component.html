@@ -1,32 +1,33 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  {{ estValideFormulaire(hero.attaque + hero.esquive + hero.degats + hero.pv, hero.attaque, hero.esquive, hero.degats, hero.pv)}}
+<div *ngIf="hero && weapons && heroWeapon">
+  <h2>{{hero.name | uppercase}} / Details of the hero</h2>
+  {{ estValideFormulaire(hero.attaque + hero.esquive + hero.degats + hero.pv, hero.attaque, hero.esquive, hero.degats, hero.pv, hero.name)}}
   <label>
-    40 points à répartir pour pouvoir modifier le héro
+    40 points à répartir pour pouvoir modifier le héros.
   </label>
   <label>
     Point(s) à répartir disponible(s) : {{ getPointsDisponibles(40 - (hero.attaque + hero.esquive + hero.degats + hero.pv)) }}
   </label>
   <div>
-    <label>Nom :
+    <label name="Nom">Nom :
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
-    <label>Attaque :
+    <label name="Attaque">Attaque :
       <input [(ngModel)]="hero.attaque" type="number" min="1" max="37" placeholder="attaque"/>
     </label>
-    <label>Dégâts :
+    <label name="Degats">Dégâts :
       <input [(ngModel)]="hero.degats" type="number" min="1" max="37" placeholder="dégâts"/>
     </label>
-    <label>Esquive :
+    <label name="Esquive">Esquive :
       <input [(ngModel)]="hero.esquive" type="number" min="1" max="37" placeholder="esquive"/>
     </label>
-    <label>Points de vie :
+    <label name="Points de vie">Points de vie :
       <input [(ngModel)]="hero.pv" type="number" min="1" max="37" placeholder="points de vie"/>
     </label>
     <label>Arme :
-      <select>
-        <option> Aucune arme</option>
-        <option *ngFor="let weapon of weapons"> {{weapon.name}}</option>
+      <select [(ngModel)]="hero.weaponId" name="Weapon">
+        <option [value]=""> No weapon</option>
+        <option id="{{weapon.id}}" *ngFor="let weapon of weapons" [value]="weapon.id"> {{weapon.name}}
+        </option>
       </select>
     </label>
   </div>
