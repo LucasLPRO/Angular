@@ -45,7 +45,6 @@ export class HeroDetailComponent implements OnInit {
 
   // Vérifie que le formulaire est valide
   estValideFormulaire(nb): boolean {
-    // return (nb > 40 || nb < 0 || atq < 1 || esq < 1 || dgt < 1 || pv < 1 || name === '');
     return (nb > 40 || nb < 0 || this.hero.attaque < 1 || this.hero.esquive < 1 || this.hero.degats < 1
       || this.hero.pv < 1 || this.hero.name === '');
   }
@@ -66,4 +65,7 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(weapons => this.weapons = weapons);
   }
 
+  getWeaponSelected(): Weapon {
+    return this.weapons.find(e => e.id === this.hero.weaponId);
+  }
 }

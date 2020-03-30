@@ -20,7 +20,7 @@ export class AddHeroComponent implements DoCheck, OnInit {
     esquive: new FormControl('', [Validators.required, Validators.max(37), Validators.min(1)]),
     degats: new FormControl('', [Validators.required, Validators.max(37), Validators.min(1)]),
     pv: new FormControl('', [Validators.required, Validators.max(37), Validators.min(1)]),
-    arme: new FormControl('', )
+    arme: new FormControl('')
   });
 
   constructor(

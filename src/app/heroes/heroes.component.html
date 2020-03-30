@@ -1,15 +1,51 @@
 <h2>My Heroes</h2>
-<div class="filtres">
-  <p> Filtrer les héros :</p>
-  <ul>
-    <li><button (click)="filtrerParNom()">Par nom</button></li>
-  </ul>
+<table class="table">
+  <tr>
+    <th> <button class="btn btn-light" (click)="filtrerParNom()">Nom</button><i [className]="setClassCSS(triCroissantNom)"></i></th>
+    <th> <button class="btn btn-light" (click)="filtrerParCaracteristique('attaque')"> Attaque</button> <i [className]="setClassCSS(triCroissantAttaque)"></i></th>
+    <th> <button class="btn btn-light" (click)="filtrerParCaracteristique('esquive')"> Esquive</button><i [className]="setClassCSS(triCroissantEsquive)"></i> </th>
+    <th> <button class="btn btn-light" (click)="filtrerParCaracteristique('degats')"> Dégâts</button><i [className]="setClassCSS(triCroissantDegats)"></i> </th>
+    <th> <button class="btn btn-light" (click)="filtrerParCaracteristique('pv')"> Points de vie</button> <i [className]="setClassCSS(triCroissantPV)"></i></th>
+    <th>
+      <form *ngIf="!filtreArme; else clearFilters" [formGroup]="formFiltreArme" (ngSubmit)="filtrerArme()">
+        <select id="weapon-sort" class="form-control-sm" formControlName="arme" name="Weapon">
+          <option> No weapon</option>
+          <option
+            *ngFor="let weapon of weapons" [value]="weapon.id"> {{weapon.name}}
+          </option>
+        </select>
+        <button class="btn btn-light"> Filtrer arme</button>
+      </form>
 
-</div>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/heroDetail/{{hero.id}}">
-      <span> {{hero.name}} </span>
-    </a>
-  </li>
-</ul>
+      <ng-template #clearFilters>
+        <button (click)="effacerFiltreArme()" class="btn btn-light"> Revoir les armes</button>
+      </ng-template>
+    </th>
+    <th> Supprimer le héro </th>
+  </tr>
+  <tr *ngFor="let hero of heroes">
+    <td>
+      <a routerLink="/heroDetail/{{hero.id}}">
+        <span> {{hero.name}} </span>
+      </a>
+    </td>
+    <td>
+      <span> {{hero.attaque}} </span>
+    </td>
+    <td>
+      <span> {{hero.esquive}} </span>
+    </td>
+    <td>
+      <span> {{hero.degats}} </span>
+    </td>
+    <td>
+      <span> {{hero.pv}} </span>
+    </td>
+    <td>
+      <span> {{getWeaponName(hero.weaponId)}}</span>
+    </td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteHero(hero)">X</button>
+    </td>
+  </tr>
+</table>

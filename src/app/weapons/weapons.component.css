@@ -33,3 +33,12 @@
 .weapons a:hover {
   color:#607D8B;
 }
+
+td {
+  width: 15%;
+}
+
+.btn-suppr {
+  margin-right: 25%;
+  margin-left: 25%;
+}

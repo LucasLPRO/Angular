@@ -29,7 +29,16 @@
         </option>
       </select>
     </label>
+    <div class="selectedWeapon" *ngIf="weapons && getWeaponSelected()">
+      <label> Statistiques de l'arme sélectionnée : </label>
+      <div> Attaque : {{getWeaponSelected().attaque}} </div>
+      <div> Esquive : {{getWeaponSelected().esquive}} </div>
+      <div> Dégâts : {{getWeaponSelected().degats}}</div>
+      <div> Points de vie : {{getWeaponSelected().pv}}</div>
+    </div>
   </div>
+
+
   <div class="btn-position">
     <button (click)="goBack()">go back</button>
   </div>
