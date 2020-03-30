@@ -43,12 +43,11 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-  estValideFormulaire(nb, atq, esq, dgt, pv, name): void {
-    if (nb > 40 || nb < 0 || atq < 1 || esq < 1 || dgt < 1 || pv < 1 || name === '') {
-      (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = true;
-    } else {
-      (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = false;
-    }
+  // Vérifie que le formulaire est valide
+  estValideFormulaire(nb): boolean {
+    // return (nb > 40 || nb < 0 || atq < 1 || esq < 1 || dgt < 1 || pv < 1 || name === '');
+    return (nb > 40 || nb < 0 || this.hero.attaque < 1 || this.hero.esquive < 1 || this.hero.degats < 1
+      || this.hero.pv < 1 || this.hero.name === '');
   }
   getPointsDisponibles(nb): number {
     if (nb < 0) {

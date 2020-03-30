@@ -33,12 +33,9 @@ export class WeaponDetailComponent implements OnInit {
     this.location.back();
   }
 
-  estValideFormulaire(nb, atq, esq, dmg, pv, name): void {
-    if (nb !== 0 || atq === null || esq === null || dmg === null || pv === null || name === '') {
-      (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = true;
-    } else {
-      (document.getElementById('btn-enregistrer') as HTMLInputElement).disabled = false;
-    }
+  estValideFormulaire(nb): boolean {
+    return (nb !== 0 || this.weapon.attaque === null || this.weapon.esquive === null
+      || this.weapon.degats === null || this.weapon.pv === null || this.weapon.name === '');
   }
   getPointsDisponibles(nb): number {
     return Math.abs(nb);

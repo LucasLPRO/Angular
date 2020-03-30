@@ -44,11 +44,16 @@ export class AddHeroComponent implements DoCheck, OnInit {
     hero.esquive = this.formHero.get('esquive').value;
     hero.degats = this.formHero.get('degats').value;
     hero.pv = this.formHero.get('pv').value;
-    hero.weaponId = this.formHero.get('arme').value;
+    hero.weaponId = this.getWeaponForNewHero();
     this.heroService.addHero(hero);
     this.router.navigate(['/heroes']);
   }
 
+  private getWeaponForNewHero() {
+    return (this.formHero.get('arme').value === '' ? 'No weapon' : this.formHero.get('arme').value);
+  }
+
+  // Vérifie que le formulaire est valide
   isNewHeroValid(): boolean {
     return this.ptsDisponibles <= 40 && this.ptsDisponibles >= 0 && this.formHero.get('attaque').value > 0
       && this.formHero.get('esquive').value > 0 && this.formHero.get('degats').value > 0 || this.formHero.get('pv').value > 0;

@@ -21,4 +21,8 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
+
+  filtrerParNom() {
+    this.heroes.sort((a, b) => a.name.localeCompare(b.name));
+  }
 }

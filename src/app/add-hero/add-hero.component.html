@@ -21,10 +21,10 @@
   <label>Point de Vie:
     <input id="weapon-pv" type="number" formControlName="pv" min="1" max="37" placeholder="0">
   </label><br/>
-  <label>Sélectionner une arme pour votre héros :
+  <label>Sélectionner une arme pour votre héros (facultatif) :
     <select formControlName="arme" name="Weapon">
-      <option value=''>No weapon</option>
-      <option *ngFor="let weapon of weapons" [value]="weapon.id"> {{weapon.name}}
+      <option
+        *ngFor="let weapon of weapons" [value]="weapon.id"> {{weapon.name}}
       </option>
     </select>
   </label><br/>

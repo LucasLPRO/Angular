@@ -1,6 +1,5 @@
 <div *ngIf="hero && weapons && heroWeapon">
   <h2>{{hero.name | uppercase}} / Details of the hero</h2>
-  {{ estValideFormulaire(hero.attaque + hero.esquive + hero.degats + hero.pv, hero.attaque, hero.esquive, hero.degats, hero.pv, hero.name)}}
   <label>
     40 points à répartir pour pouvoir modifier le héros.
   </label>
@@ -35,6 +34,6 @@
     <button (click)="goBack()">go back</button>
   </div>
   <div class="btn-position">
-    <button id="btn-enregistrer" (click)="save()"> Enregistrer les modifications</button>
+    <button id="btn-enregistrer" [disabled]="estValideFormulaire(hero.attaque + hero.esquive + hero.degats + hero.pv)" (click)="save()"> Enregistrer les modifications</button>
   </div>
 </div>

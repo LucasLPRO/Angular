@@ -1,4 +1,11 @@
 <h2>My Heroes</h2>
+<div class="filtres">
+  <p> Filtrer les héros :</p>
+  <ul>
+    <li><button (click)="filtrerParNom()">Par nom</button></li>
+  </ul>
+
+</div>
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a routerLink="/heroDetail/{{hero.id}}">

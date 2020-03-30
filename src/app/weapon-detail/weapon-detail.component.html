@@ -1,6 +1,5 @@
 <div *ngIf="weapon">
   <h2>{{weapon.name | uppercase}} / Details of the weapon</h2>
-  {{ estValideFormulaire( getPointsDisponibles(weapon.attaque + weapon.esquive + weapon.degats + weapon.pv),  weapon.attaque, weapon.esquive, weapon.degats, weapon.pv, weapon.name) }}
   <label>
     Chaque caractéristique doit être comprise entre -5 et 5 points.
   </label>
@@ -31,6 +30,6 @@
     <button (click)="goBack()">go back</button>
   </div>
   <div class="btn-position">
-    <button id="btn-enregistrer" (click)="save()"> Enregistrer les modifications</button>
+    <button id="btn-enregistrer" [disabled]="estValideFormulaire(getPointsDisponibles(weapon.attaque + weapon.esquive + weapon.degats + weapon.pv))" (click)="save()"> Enregistrer les modifications</button>
   </div>
 </div>
